@@ -15,13 +15,14 @@ void main() {
 
 	cvtColor(img, imgHSV, COLOR_BGR2HSV);
 
-	namedWindow("Tracker");
-	createTrackbar("Hue Min", "Trackbars", &h_min, 179);
-	createTrackbar("Hue Max", "Trackbars", &h_max, 179);
-	createTrackbar("Sat Min", "Trackbars", &s_min, 255);
-	createTrackbar("Sat Max", "Trackbars", &s_max, 255);
-	createTrackbar("Val Min", "Trackbars", &v_min, 255);
-	createTrackbar("Val Max", "Trackbars", &v_max, 255);
+	namedWindow("Track");
+	// Trackbars for H, S, V
+	createTrackbar("Hue Min", "Track", &h_min, 179);
+	createTrackbar("Hue Max", "Track", &h_max, 179);
+	createTrackbar("Sat Min", "Track", &s_min, 255);
+	createTrackbar("Sat Max", "Track", &s_max, 255);
+	createTrackbar("Val Min", "Track", &v_min, 255);
+	createTrackbar("Val Max", "Track", &v_max, 255);
 
 	while(true) {
 
