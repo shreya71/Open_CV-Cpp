@@ -7,14 +7,14 @@ using namespace cv;
 using namespace std;
 
 ///////////////  Color Detection  //////////////////////
-Mat imgHSV, mask;
-	int hmin = 0, smin = 0, vmin = 0;
-	int hmax = 199, smax = 255, vmax = 255;
 
 void main() {
 
-	string path = "lambo.png";
+	string path = "book.png";
 	Mat img = imread(path);
+	Mat imgHSV, mask;
+	int hmin = 0, smin = 0, vmin = 0;
+	int hmax = 199, smax = 255, vmax = 255;
 
 	cvtColor(img, imgHSV, COLOR_BGR2HSV);
 
