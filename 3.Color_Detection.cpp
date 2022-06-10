@@ -7,18 +7,19 @@ using namespace cv;
 using namespace std;
 
 ///////////////  Color Detection  //////////////////////
+Mat imgHSV, mask;
+	int hmin = 0, smin = 0, vmin = 0;
+	int hmax = 199, smax = 255, vmax = 255;
 
 void main() {
 
 	string path = "lambo.png";
 	Mat img = imread(path);
-	Mat imgHSV, mask;
-	int hmin = 0, smin = 110, vmin = 153;
-	int hmax = 19, smax = 240, vmax = 255;
 
 	cvtColor(img, imgHSV, COLOR_BGR2HSV);
 
 	namedWindow("Trackbars", (640, 200));
+	
 	createTrackbar("Hue Min", "Trackbars", &hmin, 179);
 	createTrackbar("Hue Max", "Trackbars", &hmax, 179);
 	createTrackbar("Sat Min", "Trackbars", &smin, 255);
