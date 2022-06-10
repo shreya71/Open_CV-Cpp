@@ -6,36 +6,32 @@
 using namespace cv;
 using namespace std;
 
-///////////////  Color Detection  //////////////////////
-
 void main() {
 
 	string path = "book.png";
 	Mat img = imread(path);
-	Mat imgHSV, mask;
-	int hmin = 0, smin = 0, vmin = 0;
-	int hmax = 199, smax = 255, vmax = 255;
+	Mat imgHSV, simplified;
+	int h_min = 0, s_min = 0, v_min = 0, h_max = 199, s_max = 255, v_max = 255;
 
 	cvtColor(img, imgHSV, COLOR_BGR2HSV);
-
-	namedWindow("Trackbars", (640, 200));
 	
-	createTrackbar("Hue Min", "Trackbars", &hmin, 179);
-	createTrackbar("Hue Max", "Trackbars", &hmax, 179);
-	createTrackbar("Sat Min", "Trackbars", &smin, 255);
-	createTrackbar("Sat Max", "Trackbars", &smax, 255);
-	createTrackbar("Val Min", "Trackbars", &vmin, 255);
-	createTrackbar("Val Max", "Trackbars", &vmax, 255);
+	namedWindow("Trackbars", (640, 200));
+	createTrackbar("Hue Min", "Trackbars", &h_min, 179);
+	createTrackbar("Hue Max", "Trackbars", &h_max, 179);
+	createTrackbar("Sat Min", "Trackbars", &s_min, 255);
+	createTrackbar("Sat Max", "Trackbars", &s_max, 255);
+	createTrackbar("Val Min", "Trackbars", &v_min, 255);
+	createTrackbar("Val Max", "Trackbars", &v_max, 255);
 
 	while(true) {
 
-		Scalar lower(hmin, smin, vmin);
-		Scalar upper(hmax, smax, vmax);
-		inRange(imgHSV, lower, upper, mask);
+		Scalar lower(h_min, s_min, v_min);
+		Scalar upper(h_max, s_max, v_max);
+		inRange(imgHSV, lower, upper, simplified);
 
 		imshow("Image", img);
 		imshow("Image HSV", imgHSV);
-		imshow("Image Mask", mask);
+		imshow("Image Mask", simplified);
 		waitKey(1);
 	}
 }
